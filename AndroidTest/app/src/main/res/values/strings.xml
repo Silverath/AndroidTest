@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">AndroidTest</string>
+    <string name="title_task">Tareas</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="task_add">Añadir Tarea</string>
+    <string name="task_add_title_hint">Añade el título</string>
+    <string name="task_add_description_hint">Añade la descripción</string>
+    <string name="task_add_error_empty">No puede estar vacío</string>
+    <string name="task_add_date_hint">Selecciona la fecha de vencimiento</string>
+
+</resources>
