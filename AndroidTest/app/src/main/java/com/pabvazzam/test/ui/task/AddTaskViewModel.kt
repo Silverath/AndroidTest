@@ -1,5 +1,6 @@
 package com.pabvazzam.test.ui.task
 
+import android.content.SharedPreferences
 import androidx.lifecycle.ViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -12,7 +13,9 @@ import java.util.Locale
 import javax.inject.Inject
 
 @HiltViewModel
-class AddTaskViewModel @Inject constructor() : ViewModel() {
+class AddTaskViewModel @Inject constructor(
+    private val sharedPreferences: SharedPreferences
+) : ViewModel() {
 
     private val _uiState = MutableStateFlow(AddTaskUiState())
     val uiState: StateFlow<AddTaskUiState> = _uiState.asStateFlow()
@@ -54,6 +57,6 @@ class AddTaskViewModel @Inject constructor() : ViewModel() {
     }
 
     fun onSaveTask() {
-        TODO("Not yet implemented")
+
     }
 }

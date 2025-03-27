@@ -14,6 +14,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.navigation.fragment.findNavController
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 import com.pabvazzam.test.R
@@ -64,6 +65,7 @@ class AddTaskFragment : Fragment() {
 
         saveTaskButton.setOnClickListener {
             viewModel.onSaveTask()
+            findNavController().popBackStack()
         }
 
         return v
@@ -76,7 +78,7 @@ class AddTaskFragment : Fragment() {
                 viewModel.uiState.collect { state ->
                     saveTaskButton.isEnabled = state.title.isNotEmpty() &&
                             state.description.isNotEmpty() &&
-                            state.expirationDate.isNotEmpty()
+                            !state.selectDateError
                     taskDateText.text =
                         Editable.Factory.getInstance().newEditable(state.expirationDate)
                     if (state.selectDateError) {
