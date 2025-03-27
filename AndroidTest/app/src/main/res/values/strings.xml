@@ -8,5 +8,7 @@
     <string name="task_add_description_hint">Añade la descripción</string>
     <string name="task_add_error_empty">No puede estar vacío</string>
     <string name="task_add_date_hint">Selecciona la fecha de vencimiento</string>
+    <string name="task_add_date_error">La fecha de vencimiento debe ser posterior a la actual</string>
+    <string name="task_add_save">Crear tarea</string>
 
 </resources>

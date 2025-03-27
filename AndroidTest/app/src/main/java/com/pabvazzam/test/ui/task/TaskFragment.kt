@@ -9,6 +9,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.navigation.fragment.findNavController
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.pabvazzam.test.R
 import dagger.hilt.android.AndroidEntryPoint
@@ -19,13 +20,11 @@ class TaskFragment : Fragment() {
 
     private val viewModel: TaskViewModel by viewModels()
 
-    private val addTaskButton = view?.findViewById<FloatingActionButton>(R.id.add_task)
+
+    private lateinit var addTaskButton: FloatingActionButton
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        addTaskButton?.setOnClickListener { view ->
-
-        }
 
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
@@ -36,11 +35,24 @@ class TaskFragment : Fragment() {
         }
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_task, container, false)
+    ): View {
+        val v: View = inflater.inflate(R.layout.fragment_task, container, false)
+
+        addTaskButton = v.findViewById(R.id.add_task_button)
+        addTaskButton.setOnClickListener {
+            findNavController().navigate(R.id.action_navigation_task_to_navigation_add_task)
+        }
+
+        return v
     }
 }
