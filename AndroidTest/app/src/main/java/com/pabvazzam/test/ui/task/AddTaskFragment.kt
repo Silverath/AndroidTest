@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.Toast
 import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -64,8 +65,20 @@ class AddTaskFragment : Fragment() {
         }
 
         saveTaskButton.setOnClickListener {
-            viewModel.onSaveTask()
-            findNavController().popBackStack()
+            if (viewModel.onSaveTask()) {
+                Toast.makeText(
+                    activity,
+                    resources.getString(R.string.task_add_save_success),
+                    Toast.LENGTH_SHORT
+                ).show()
+                findNavController().popBackStack()
+            } else {
+                Toast.makeText(
+                    activity,
+                    resources.getString(R.string.task_add_save_failure),
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
         }
 
         return v
@@ -76,8 +89,9 @@ class AddTaskFragment : Fragment() {
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.uiState.collect { state ->
-                    saveTaskButton.isEnabled = state.title.isNotEmpty() &&
-                            state.description.isNotEmpty() &&
+                    saveTaskButton.isEnabled = state.title.isNotBlank() &&
+                            state.description.isNotBlank() &&
+                            state.expirationDate.isNotBlank() &&
                             !state.selectDateError
                     taskDateText.text =
                         Editable.Factory.getInstance().newEditable(state.expirationDate)

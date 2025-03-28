@@ -11,6 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="12dp"
+        android:layout_marginBottom="24dp"
         app:layout_constraintBottom_toTopOf="@+id/description_input_layout"
 
         app:layout_constraintStart_toStartOf="parent">
@@ -20,6 +21,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
+            android:maxLines="1"
             android:hint="@string/task_add_title_hint"
             android:inputType="textMultiLine" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -37,7 +39,9 @@
             android:id="@+id/description_edit_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:maxLines="3"
             android:ems="10"
+            android:layout_marginBottom="24dp"
             android:hint="@string/task_add_description_hint"
             android:inputType="textMultiLine" />
     </com.google.android.material.textfield.TextInputLayout>

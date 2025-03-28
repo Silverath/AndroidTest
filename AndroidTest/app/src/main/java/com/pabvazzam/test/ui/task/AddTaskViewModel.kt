@@ -1,7 +1,8 @@
 package com.pabvazzam.test.ui.task
 
-import android.content.SharedPreferences
 import androidx.lifecycle.ViewModel
+import com.pabvazzam.test.data.Task
+import com.pabvazzam.test.usecase.AddTaskUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -14,7 +15,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class AddTaskViewModel @Inject constructor(
-    private val sharedPreferences: SharedPreferences
+    private val addTaskUseCase: AddTaskUseCase
 ) : ViewModel() {
 
     private val _uiState = MutableStateFlow(AddTaskUiState())
@@ -56,7 +57,9 @@ class AddTaskViewModel @Inject constructor(
         }
     }
 
-    fun onSaveTask() {
-
+    fun onSaveTask(): Boolean {
+        val task =
+            Task(_uiState.value.title, _uiState.value.description, _uiState.value.expirationDate)
+        return addTaskUseCase(task).isSuccess
     }
 }

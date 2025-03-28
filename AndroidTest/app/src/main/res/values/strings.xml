@@ -10,5 +10,7 @@
     <string name="task_add_date_hint">Selecciona la fecha de vencimiento</string>
     <string name="task_add_date_error">La fecha de vencimiento debe ser posterior a la actual</string>
     <string name="task_add_save">Crear tarea</string>
+    <string name="task_add_save_success">Tarea creada correctamente</string>
+    <string name="task_add_save_failure">Ha habido un error al crear la tarea</string>
 
 </resources>
