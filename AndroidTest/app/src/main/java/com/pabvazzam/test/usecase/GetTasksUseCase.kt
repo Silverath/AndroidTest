@@ -10,10 +10,6 @@ class GetTasksUseCase @Inject constructor(
 
     operator fun invoke(): Result<List<Task>> {
         val tasks = taskRepositoryImpl.getTasks()
-        return if (tasks == null) {
-            Result.failure(exception = NullPointerException())
-        } else {
-            Result.success(tasks)
-        }
+        return Result.success(tasks)
     }
 }

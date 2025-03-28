@@ -9,19 +9,24 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
-import com.google.android.material.floatingactionbutton.FloatingActionButton
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.pabvazzam.test.R
+import com.pabvazzam.test.data.Task
+import com.pabvazzam.test.databinding.FragmentTaskBinding
+import com.pabvazzam.test.ui.task.recyclerview.TaskAdapter
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class TaskFragment : Fragment() {
 
+    private var _binding: FragmentTaskBinding? = null
+
+    private val binding get() = _binding!!
+
     private val viewModel: TaskViewModel by viewModels()
-
-
-    private lateinit var addTaskButton: FloatingActionButton
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,16 +34,21 @@ class TaskFragment : Fragment() {
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.uiState.collect {
-                    // Update UI elements
+
                 }
             }
         }
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+    private fun initRecyclerView() {
+        viewModel.fetchTasks()
+        binding.taskRv.layoutManager = LinearLayoutManager(context)
+        binding.taskRv.adapter =
+            TaskAdapter(viewModel.uiState.value.tasks) { task -> onTaskClicked(task) }
+    }
 
-
+    private fun onTaskClicked(task: Task) {
+        
     }
 
     override fun onCreateView(
@@ -46,13 +56,19 @@ class TaskFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val v: View = inflater.inflate(R.layout.fragment_task, container, false)
+        _binding = FragmentTaskBinding.inflate(inflater, container, false)
+        val view = binding.root
 
-        addTaskButton = v.findViewById(R.id.add_task_button)
-        addTaskButton.setOnClickListener {
+        initRecyclerView()
+        binding.addTaskButton.setOnClickListener {
             findNavController().navigate(R.id.action_navigation_task_to_navigation_add_task)
         }
 
-        return v
+        return view
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
     }
 }
