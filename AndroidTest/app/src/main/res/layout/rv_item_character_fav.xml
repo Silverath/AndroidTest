@@ -6,7 +6,7 @@
 
     <ImageView
         android:id="@+id/rv_item_character_fav_image"
-        android:contentDescription="@string/task_edit"
+        android:contentDescription="@string/rv_item_character_image_description"
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:layout_marginStart="16dp"

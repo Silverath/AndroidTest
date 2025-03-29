@@ -7,7 +7,6 @@ import com.google.gson.reflect.TypeToken
 import com.pabvazzam.test.FAV_CHARACTER_SAVED_LIST
 import com.pabvazzam.test.api.ApiService
 import com.pabvazzam.test.data.Character
-import com.pabvazzam.test.data.Task
 import javax.inject.Inject
 
 class CharacterRepositoryImpl @Inject constructor(
@@ -36,7 +35,7 @@ class CharacterRepositoryImpl @Inject constructor(
     override fun getFavCharacters(): List<Character> {
         return gson.fromJson<List<Character>?>(
             sharedPreferences.getString(FAV_CHARACTER_SAVED_LIST, null),
-            object : TypeToken<List<Task>?>() {}.type
+            object : TypeToken<List<Character>?>() {}.type
         ) ?: emptyList()
     }
 }

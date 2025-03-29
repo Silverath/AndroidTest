@@ -1,4 +1,7 @@
 package com.pabvazzam.test.ui.character.fav
 
-class CharacterFavUiState {
-}
+import com.pabvazzam.test.data.Character
+
+data class CharacterFavUiState(
+    val characters: List<Character> = emptyList()
+)

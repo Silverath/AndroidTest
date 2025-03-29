@@ -20,10 +20,14 @@
 
 
     <fragment
-        android:id="@+id/navigation_dashboard"
+        android:id="@+id/navigation_character_list"
         android:name="com.pabvazzam.test.ui.character.list.CharacterFragment"
         android:label="@string/title_character"
-        tools:layout="@layout/fragment_character" />
+        tools:layout="@layout/fragment_character">
+        <action
+            android:id="@+id/action_navigation_character_list_to_character_fav_list"
+            app:destination="@id/navigation_character_fav_list" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_notifications"
@@ -41,7 +45,7 @@
             app:destination="@id/navigation_notifications" />
         <action
             android:id="@+id/action_navigation_add_task_to_navigation_dashboard"
-            app:destination="@id/navigation_dashboard" />
+            app:destination="@id/navigation_character_list" />
     </fragment>
     <fragment
         android:id="@+id/navigation_edit_task"
@@ -52,6 +56,11 @@
             android:name="taskId"
             app:argType="string" />
     </fragment>
+    <fragment
+        android:id="@+id/navigation_character_fav_list"
+        android:name="com.pabvazzam.test.ui.character.fav.CharacterFavFragment"
+        android:label="CharacterFavFragment"
+        tools:layout="@layout/fragment_character_fav" />
 
 
 </navigation>

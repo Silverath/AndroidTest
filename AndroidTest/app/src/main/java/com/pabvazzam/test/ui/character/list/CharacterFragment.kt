@@ -10,6 +10,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.pabvazzam.test.R
@@ -101,6 +102,11 @@ class CharacterFragment : Fragment() {
         _binding = FragmentCharacterBinding.inflate(inflater, container, false)
         val view: View = binding.root
         initRecyclerView()
+
+        binding.navigateToCharacterFavList.setOnClickListener {
+            binding.root.findNavController()
+                .navigate(R.id.action_navigation_character_list_to_character_fav_list)
+        }
         viewModel.fetchCharacters(characterAdapter)
         return view
     }
