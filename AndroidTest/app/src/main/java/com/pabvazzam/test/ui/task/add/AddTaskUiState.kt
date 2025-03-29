@@ -1,4 +1,4 @@
-package com.pabvazzam.test.ui.task
+package com.pabvazzam.test.ui.task.add
 
 data class AddTaskUiState(
     val title: String = "",

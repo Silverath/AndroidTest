@@ -1,39 +1,51 @@
-package com.pabvazzam.test.ui.task
+package com.pabvazzam.test.ui.task.edit
 
 import androidx.lifecycle.ViewModel
-import com.pabvazzam.test.data.Task
-import com.pabvazzam.test.usecase.AddTaskUseCase
+import androidx.lifecycle.viewModelScope
+import com.pabvazzam.test.usecase.GetTaskToEditUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
+import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Locale
 import javax.inject.Inject
 
 @HiltViewModel
-class AddTaskViewModel @Inject constructor(
-    private val addTaskUseCase: AddTaskUseCase
+class EditTaskViewModel @Inject constructor(
+    private val getTaskToEditUseCase: GetTaskToEditUseCase
 ) : ViewModel() {
 
-    private val _uiState = MutableStateFlow(AddTaskUiState())
-    val uiState: StateFlow<AddTaskUiState> = _uiState.asStateFlow()
+    private val _uiState = MutableStateFlow<EditTaskUiState>(EditTaskUiState.Loading)
+    val uiState: StateFlow<EditTaskUiState> = _uiState.asStateFlow()
+
+    fun fetchTask(taskId: String) {
+        viewModelScope.launch {
+            val result = getTaskToEditUseCase.invoke(taskId)
+            result.onSuccess { task ->
+                _uiState.update {
+                    EditTaskUiState.Success(task = task)
+                }
+            }
+        }
+    }
 
     fun onDateTimeSelected(date: Calendar) {
         val dateFormat = SimpleDateFormat("dd/MM/yyyy hh:mm", Locale.getDefault())
         val formattedDate = dateFormat.format(date.time)
         if (date.before(Calendar.getInstance())) {
             _uiState.update {
-                _uiState.value.copy(
+                (_uiState.value as EditTaskUiState.Success).copy(
                     expirationDate = formattedDate,
                     selectDateError = true
                 )
             }
         } else {
             _uiState.update {
-                _uiState.value.copy(
+                (_uiState.value as EditTaskUiState.Success).copy(
                     expirationDate = formattedDate,
                     selectDateError = false
                 )
@@ -43,7 +55,7 @@ class AddTaskViewModel @Inject constructor(
 
     fun onTitleEditTextChanged(text: String) {
         _uiState.update {
-            _uiState.value.copy(
+            (_uiState.value as EditTaskUiState.Success).copy(
                 title = text
             )
         }
@@ -51,15 +63,14 @@ class AddTaskViewModel @Inject constructor(
 
     fun onDescriptionEditTextChanged(text: String) {
         _uiState.update {
-            _uiState.value.copy(
+            (_uiState.value as EditTaskUiState.Success).copy(
                 description = text
             )
         }
     }
 
     fun onSaveTask(): Boolean {
-        val task =
-            Task(_uiState.value.title, _uiState.value.description, _uiState.value.expirationDate)
-        return addTaskUseCase(task).isSuccess
+
+        return true
     }
 }

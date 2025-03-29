@@ -6,65 +6,75 @@
     tools:context=".ui.task.add.AddTaskFragment"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <ProgressBar
+        android:id="@+id/progress_bar"
+        style="@style/Base.Widget.AppCompat.ProgressBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:indeterminate="true"
+        android:visibility="visible"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/add_title_input_layout"
+        android:id="@+id/edit_title_input_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="24dp"
-        app:layout_constraintBottom_toTopOf="@+id/add_description_input_layout"
+        app:layout_constraintBottom_toTopOf="@+id/edit_description_input_layout"
 
         app:layout_constraintStart_toStartOf="parent">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/add_title_edit_text"
+            android:id="@+id/edit_title_edit_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
             android:maxLength="40"
-            android:hint="@string/task_add_title_hint"
             android:inputType="textMultiLine" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/add_description_input_layout"
+        android:id="@+id/edit_description_input_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:maxLength="120"
-        app:layout_constraintBottom_toTopOf="@+id/add_task_save_button"
+        app:layout_constraintBottom_toTopOf="@+id/edit_task_save_button"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/add_description_edit_text"
+            android:id="@+id/edit_description_edit_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
             android:layout_marginBottom="24dp"
-            android:hint="@string/task_add_description_hint"
             android:inputType="textMultiLine" />
     </com.google.android.material.textfield.TextInputLayout>
 
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/add_date_input_layout"
+        android:id="@+id/edit_date_input_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:focusable="false"
-        android:hint="@string/task_add_date_hint"
         app:errorEnabled="true"
         app:errorTextAppearance="@string/task_add_date_error"
         app:errorTextColor="@color/red"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/add_description_input_layout">
+        app:layout_constraintTop_toBottomOf="@+id/edit_description_input_layout">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/add_date_edit_text"
+            android:id="@+id/edit_date_edit_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -72,12 +82,12 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
-        android:id="@+id/add_task_save_button"
+        android:id="@+id/edit_task_save_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
-        android:text="@string/task_add_save"
+        android:text="@string/task_edit_save"
         android:enabled="false"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"

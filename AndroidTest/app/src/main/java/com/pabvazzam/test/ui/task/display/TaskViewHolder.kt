@@ -1,4 +1,4 @@
-package com.pabvazzam.test.ui.task.recyclerview
+package com.pabvazzam.test.ui.task.display
 
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView

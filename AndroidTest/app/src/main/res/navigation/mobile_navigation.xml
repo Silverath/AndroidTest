@@ -7,13 +7,17 @@
 
     <fragment
         android:id="@+id/navigation_task"
-        android:name="com.pabvazzam.test.ui.task.TaskFragment"
+        android:name="com.pabvazzam.test.ui.task.display.TaskFragment"
         android:label="@string/title_task"
         tools:layout="@layout/fragment_task">
         <action
             android:id="@+id/action_navigation_task_to_navigation_add_task"
             app:destination="@id/navigation_add_task" />
+        <action
+            android:id="@+id/action_navigation_task_to_navigation_edit_task"
+            app:destination="@id/navigation_edit_task" />
     </fragment>
+
 
     <fragment
         android:id="@+id/navigation_dashboard"
@@ -29,7 +33,7 @@
 
     <fragment
         android:id="@+id/navigation_add_task"
-        android:name="com.pabvazzam.test.ui.task.AddTaskFragment"
+        android:name="com.pabvazzam.test.ui.task.add.AddTaskFragment"
         android:label="@string/task_add"
         tools:layout="@layout/fragment_add_task">
         <action
@@ -39,4 +43,15 @@
             android:id="@+id/action_navigation_add_task_to_navigation_dashboard"
             app:destination="@id/navigation_dashboard" />
     </fragment>
+    <fragment
+        android:id="@+id/navigation_edit_task"
+        android:name="com.pabvazzam.test.ui.task.edit.EditTaskFragment"
+        android:label="@string/task_edit"
+        tools:layout="@layout/fragment_edit_task">
+        <argument
+            android:name="taskId"
+            app:argType="string" />
+    </fragment>
+
+
 </navigation>

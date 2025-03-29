@@ -3,6 +3,7 @@ plugins {
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.android.dagger.hilt)
     alias(libs.plugins.kotlin.kapt)
+    alias(libs.plugins.androidx.navigationsafe.args.ktx)
 }
 
 android {

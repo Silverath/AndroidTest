@@ -13,5 +13,7 @@
     <string name="task_add_save">Crear tarea</string>
     <string name="task_add_save_success">Tarea creada correctamente</string>
     <string name="task_add_save_failure">Ha habido un error al crear la tarea</string>
+    <string name="task_edit_save">Guardar cambios</string>
+    <string name="task_edit">Editar Tarea</string>
 
 </resources>

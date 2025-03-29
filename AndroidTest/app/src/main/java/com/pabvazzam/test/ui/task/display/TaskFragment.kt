@@ -1,4 +1,4 @@
-package com.pabvazzam.test.ui.task
+package com.pabvazzam.test.ui.task.display
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,18 +6,14 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.lifecycleScope
-import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.pabvazzam.test.R
 import com.pabvazzam.test.data.Task
 import com.pabvazzam.test.databinding.FragmentTaskBinding
-import com.pabvazzam.test.ui.task.recyclerview.TaskAdapter
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class TaskFragment : Fragment() {
@@ -28,27 +24,22 @@ class TaskFragment : Fragment() {
 
     private val viewModel: TaskViewModel by viewModels()
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-        lifecycleScope.launch {
-            repeatOnLifecycle(Lifecycle.State.STARTED) {
-                viewModel.uiState.collect {
-
-                }
-            }
-        }
-    }
-
     private fun initRecyclerView() {
         viewModel.fetchTasks()
-        binding.taskRv.layoutManager = LinearLayoutManager(context)
+        val manager = LinearLayoutManager(context)
+        val decoration = DividerItemDecoration(context, manager.orientation)
+        binding.taskRv.layoutManager = manager
         binding.taskRv.adapter =
             TaskAdapter(viewModel.uiState.value.tasks) { task -> onTaskClicked(task) }
+        binding.taskRv.addItemDecoration(decoration)
     }
 
     private fun onTaskClicked(task: Task) {
-        
+        val action = TaskFragmentDirections.actionNavigationTaskToNavigationEditTask(
+            viewModel.convertTaskToJson(task)
+        )
+        binding.root.findNavController()
+            .navigate(action)
     }
 
     override fun onCreateView(

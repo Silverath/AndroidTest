@@ -6,4 +6,5 @@ interface SharedPreferencesRepository {
 
     fun addTask(task: Task)
     fun getTasks(): List<Task>?
+    fun getTask(id: String): Task
 }
