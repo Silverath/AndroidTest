@@ -2,8 +2,6 @@ package com.pabvazzam.test.ui.task.display
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.google.gson.Gson
-import com.pabvazzam.test.data.Task
 import com.pabvazzam.test.usecase.GetTasksUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -15,8 +13,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class TaskViewModel @Inject constructor(
-    private val getTasksUseCase: GetTasksUseCase,
-    private val gson: Gson
+    private val getTasksUseCase: GetTasksUseCase
 ) : ViewModel() {
 
     private val _uiState = MutableStateFlow(TaskUiState())
@@ -34,10 +31,4 @@ class TaskViewModel @Inject constructor(
             }
         }
     }
-
-    fun convertTaskToJson(task: Task): String {
-        val jsonTask = gson.toJson(task)
-        return jsonTask
-    }
-
 }

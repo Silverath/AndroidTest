@@ -35,4 +35,20 @@ class SharedPreferencesRepositoryImpl @Inject constructor(
         val json = gson.toJson(listToSave)
         sharedPreferences.edit { putString(TASK_SAVED_LIST, json) }
     }
+
+    override fun editTask(task: Task) {
+        val tasks = getTasks().toMutableList()
+        val taskToReplace = tasks.first { t -> task.id == t.id }
+        val index = tasks.indexOf(taskToReplace)
+        tasks[index] = task
+        val json = gson.toJson(tasks.toList())
+        sharedPreferences.edit { putString(TASK_SAVED_LIST, json) }
+    }
+
+    override fun deleteTask(task: Task) {
+        val tasks = getTasks().toMutableList()
+        tasks.remove(task)
+        val json = gson.toJson(tasks.toList())
+        sharedPreferences.edit { putString(TASK_SAVED_LIST, json) }
+    }
 }

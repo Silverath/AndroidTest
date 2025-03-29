@@ -58,7 +58,7 @@
         android:focusable="false"
         android:hint="@string/task_add_date_hint"
         app:errorEnabled="true"
-        app:errorTextAppearance="@string/task_add_date_error"
+        app:errorTextAppearance="@string/task_date_error"
         app:errorTextColor="@color/red"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/add_description_input_layout">

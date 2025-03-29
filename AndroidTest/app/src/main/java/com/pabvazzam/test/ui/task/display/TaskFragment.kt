@@ -36,7 +36,7 @@ class TaskFragment : Fragment() {
 
     private fun onTaskClicked(task: Task) {
         val action = TaskFragmentDirections.actionNavigationTaskToNavigationEditTask(
-            viewModel.convertTaskToJson(task)
+            task.id
         )
         binding.root.findNavController()
             .navigate(action)

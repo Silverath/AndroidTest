@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -15,6 +16,7 @@ import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.pabvazzam.test.R
+import com.pabvazzam.test.TASK_STATUS_DONE
 import com.pabvazzam.test.databinding.FragmentEditTaskBinding
 import com.pabvazzam.test.ui.showDatePicker
 import dagger.hilt.android.AndroidEntryPoint
@@ -60,18 +62,53 @@ class EditTaskFragment : Fragment() {
             }
         }
 
+        binding.editStatusValue.setOnCheckedChangeListener { _, isChecked ->
+            viewModel.onTaskStatusChanged(isChecked)
+        }
+
+        binding.deleteTask.setOnClickListener {
+            context?.let {
+                val builder = AlertDialog.Builder(it)
+                builder.setMessage(resources.getString(R.string.task_delete_confirmation_message))
+                    .setCancelable(false)
+                    .setPositiveButton(resources.getString(R.string.task_delete_yes)) { dialog, _ ->
+                        if (viewModel.onDeleteTask()) {
+                            Toast.makeText(
+                                activity,
+                                resources.getString(R.string.task_delete_success),
+                                Toast.LENGTH_SHORT
+                            ).show()
+                            findNavController().popBackStack()
+                        } else {
+                            Toast.makeText(
+                                activity,
+                                resources.getString(R.string.task_delete_failure),
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        }
+                        dialog.dismiss()
+                    }
+                    .setNegativeButton(resources.getString(R.string.task_delete_no)) { dialog, _ ->
+                        // Dismiss the dialog
+                        dialog.dismiss()
+                    }
+                val alert = builder.create()
+                alert.show()
+            }
+        }
+
         binding.editTaskSaveButton.setOnClickListener {
             if (viewModel.onSaveTask()) {
                 Toast.makeText(
                     activity,
-                    resources.getString(R.string.task_add_save_success),
+                    resources.getString(R.string.task_edit_save_success),
                     Toast.LENGTH_SHORT
                 ).show()
                 findNavController().popBackStack()
             } else {
                 Toast.makeText(
                     activity,
-                    resources.getString(R.string.task_add_save_failure),
+                    resources.getString(R.string.task_edit_save_failure),
                     Toast.LENGTH_SHORT
                 ).show()
             }
@@ -84,18 +121,27 @@ class EditTaskFragment : Fragment() {
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.uiState.collect { state ->
-                    binding.editTaskSaveButton.isEnabled = state.title.isNotBlank() &&
-                            state.description.isNotBlank() &&
-                            state.expirationDate.isNotBlank() &&
-                            !state.selectDateError
-                    binding.editDateEditText.text =
-                        Editable.Factory.getInstance().newEditable(state.expirationDate)
-                    if (state.selectDateError) {
-                        binding.editDateInputLayout.error =
-                            resources.getString(R.string.task_add_date_error)
-                    } else {
-                        binding.editDateInputLayout.error = null
+                    if (state is EditTaskUiState.Success) {
+                        if (state.isFirstLoad) {
+
+                            binding.editTitleEditText.text =
+                                Editable.Factory.getInstance().newEditable(state.title)
+                            binding.editDescriptionEditText.text =
+                                Editable.Factory.getInstance().newEditable(state.description)
+                            binding.editStatusValue.isChecked = (state.status == TASK_STATUS_DONE)
+                            binding.progressBar.visibility = View.GONE
+
+                            viewModel.onFirstLoadCompleted()
+                        }
+
+                        binding.editTaskSaveButton.isEnabled = state.title.isNotBlank() &&
+                                state.description.isNotBlank() &&
+                                state.expirationDate.isNotBlank()
+                        binding.editDateEditText.text =
+                            Editable.Factory.getInstance().newEditable(state.expirationDate)
                     }
+
+
                 }
             }
         }

@@ -88,7 +88,7 @@ class AddTaskFragment : Fragment() {
                         Editable.Factory.getInstance().newEditable(state.expirationDate)
                     if (state.selectDateError) {
                         binding.addDateInputLayout.error =
-                            resources.getString(R.string.task_add_date_error)
+                            resources.getString(R.string.task_date_error)
                     } else {
                         binding.addDateInputLayout.error = null
                     }

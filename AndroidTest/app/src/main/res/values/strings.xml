@@ -9,11 +9,20 @@
     <string name="task_add_description_hint">Añade la descripción</string>
     <string name="task_add_error_empty">No puede estar vacío</string>
     <string name="task_add_date_hint">Selecciona la fecha de vencimiento</string>
-    <string name="task_add_date_error">La fecha de vencimiento debe ser posterior a la actual</string>
+    <string name="task_date_error">La fecha de vencimiento debe ser posterior a la actual</string>
     <string name="task_add_save">Crear tarea</string>
     <string name="task_add_save_success">Tarea creada correctamente</string>
     <string name="task_add_save_failure">Ha habido un error al crear la tarea</string>
     <string name="task_edit_save">Guardar cambios</string>
     <string name="task_edit">Editar Tarea</string>
+    <string name="task_edit_status_value">Completada</string>
+    <string name="task_edit_save_success">Tarea editada correctamente</string>
+    <string name="task_edit_save_failure">Ha habido un error al editar la tarea</string>
+    <string name="task_delete">Eliminar tarea</string>
+    <string name="task_delete_confirmation_message">¿Eliminar tarea?</string>
+    <string name="task_delete_yes">Sí</string>
+    <string name="task_delete_no">No</string>
+    <string name="task_delete_success">Tarea eliminada correctamente</string>
+    <string name="task_delete_failure">Ha habido un error al eliminar la tarea</string>
 
 </resources>

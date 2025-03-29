@@ -6,15 +6,13 @@ sealed interface EditTaskUiState {
 
     object Loading : EditTaskUiState
 
-    object Error : EditTaskUiState
-
     data class Success(
         val task: Task,
         val title: String = task.title,
         val description: String = task.description,
         val expirationDate: String = task.expirationDate,
         val status: String = task.status,
-        val selectDateError: Boolean = false
+        val isFirstLoad: Boolean = true
     ) : EditTaskUiState
 }
 
