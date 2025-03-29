@@ -1,4 +1,4 @@
-package com.pabvazzam.test.ui.task.display
+package com.pabvazzam.test.ui.task.list
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope

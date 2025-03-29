@@ -25,4 +25,8 @@
     <string name="task_delete_success">Tarea eliminada correctamente</string>
     <string name="task_delete_failure">Ha habido un error al eliminar la tarea</string>
 
+    <string name="rv_item_character_image_description">Imagen del personaje</string>
+    <string name="character_list_load_error">Ha habido un error al cargar a los personajes</string>
+    <string name="character_list_fav_status">Favorito</string>
+
 </resources>

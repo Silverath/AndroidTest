@@ -4,7 +4,7 @@ import com.pabvazzam.test.data.Task
 
 sealed interface EditTaskUiState {
 
-    object Loading : EditTaskUiState
+    data object Loading : EditTaskUiState
 
     data class Success(
         val task: Task,
