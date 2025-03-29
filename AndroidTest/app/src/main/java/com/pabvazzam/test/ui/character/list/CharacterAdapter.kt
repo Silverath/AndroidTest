@@ -8,7 +8,7 @@ import com.pabvazzam.test.R
 import com.pabvazzam.test.data.Character
 
 class CharacterAdapter(
-    private val onCharacterClicked: (Character) -> Unit
+    private val onFavClicked: (Character) -> Unit
 ) :
     PagingDataAdapter<Character, CharacterViewHolder>(diffCallback) {
 
@@ -33,7 +33,7 @@ class CharacterAdapter(
     override fun onBindViewHolder(holder: CharacterViewHolder, position: Int) {
         val character = getItem(position)
         if (character != null) {
-            holder.render(character, onCharacterClicked)
+            holder.render(character, onFavClicked)
         }
     }
 }

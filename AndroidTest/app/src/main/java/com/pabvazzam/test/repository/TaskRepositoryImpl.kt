@@ -8,10 +8,10 @@ import com.pabvazzam.test.TASK_SAVED_LIST
 import com.pabvazzam.test.data.Task
 import javax.inject.Inject
 
-class SharedPreferencesRepositoryImpl @Inject constructor(
+class TaskRepositoryImpl @Inject constructor(
     private val sharedPreferences: SharedPreferences,
     private val gson: Gson
-) : SharedPreferencesRepository {
+) : TaskRepository {
 
     override fun getTasks(): List<Task> {
         return gson.fromJson<List<Task>?>(

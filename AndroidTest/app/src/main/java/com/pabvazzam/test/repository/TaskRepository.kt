@@ -2,7 +2,7 @@ package com.pabvazzam.test.repository
 
 import com.pabvazzam.test.data.Task
 
-interface SharedPreferencesRepository {
+interface TaskRepository {
 
     fun addTask(task: Task)
     fun getTasks(): List<Task>?

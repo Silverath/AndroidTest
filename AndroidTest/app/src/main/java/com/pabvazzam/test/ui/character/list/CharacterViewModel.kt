@@ -4,7 +4,9 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
+import com.pabvazzam.test.data.Character
 import com.pabvazzam.test.ui.character.list.paging.CharacterPagingSource
+import com.pabvazzam.test.usecase.AddFavCharacterUseCase
 import com.pabvazzam.test.usecase.GetCharactersApiUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -16,7 +18,8 @@ import javax.inject.Inject
 
 @HiltViewModel
 class CharacterViewModel @Inject constructor(
-    private val getCharactersUseCase: GetCharactersApiUseCase
+    private val getCharactersUseCase: GetCharactersApiUseCase,
+    private val addFavCharacterUseCase: AddFavCharacterUseCase
 ) : ViewModel() {
 
     private val _uiState = MutableStateFlow<CharacterUiState>(CharacterUiState.Loading)
@@ -30,5 +33,9 @@ class CharacterViewModel @Inject constructor(
                 characterAdapter.submitData(it)
             }
         }
+    }
+
+    fun onFavChanged(character: Character, onAddedFavCharacter: (Boolean) -> Unit) {
+        onAddedFavCharacter(addFavCharacterUseCase.invoke(character).isSuccess)
     }
 }

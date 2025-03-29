@@ -5,7 +5,7 @@ import com.google.gson.Gson
 import com.pabvazzam.test.BASE_URL
 import com.pabvazzam.test.api.ApiService
 import com.pabvazzam.test.repository.CharacterRepositoryImpl
-import com.pabvazzam.test.repository.SharedPreferencesRepositoryImpl
+import com.pabvazzam.test.repository.TaskRepositoryImpl
 import com.pabvazzam.test.services.SharedPreferencesManager
 import dagger.Module
 import dagger.Provides
@@ -38,8 +38,8 @@ object SystemServiceModule {
     fun provideSharedPreferencesRepository(
         sharedPreferences: SharedPreferences,
         gson: Gson
-    ): SharedPreferencesRepositoryImpl {
-        return SharedPreferencesRepositoryImpl(sharedPreferences, gson)
+    ): TaskRepositoryImpl {
+        return TaskRepositoryImpl(sharedPreferences, gson)
     }
 
     @Provides

@@ -13,6 +13,7 @@ import androidx.lifecycle.repeatOnLifecycle
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.pabvazzam.test.R
+import com.pabvazzam.test.data.Character
 import com.pabvazzam.test.databinding.FragmentCharacterBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
@@ -31,12 +32,32 @@ class CharacterFragment : Fragment() {
     private fun initRecyclerView() {
         val manager = LinearLayoutManager(context)
         val decoration = DividerItemDecoration(context, manager.orientation)
-        characterAdapter = CharacterAdapter { character -> "onTaskClicked(task)" }
+        characterAdapter = CharacterAdapter { character ->
+            viewModel.onFavChanged(
+                character
+            ) { added -> onAddedFavCharacter(character, added) }
+        }
         binding.characterRv.layoutManager = manager
         binding.characterRv.adapter =
             characterAdapter
 
         binding.characterRv.addItemDecoration(decoration)
+    }
+
+    private fun onAddedFavCharacter(character: Character, added: Boolean) {
+        if (added) {
+            Toast.makeText(
+                binding.root.context,
+                resources.getString(R.string.character_fav_success, character.name),
+                Toast.LENGTH_SHORT
+            ).show()
+        } else {
+            Toast.makeText(
+                binding.root.context,
+                resources.getString(R.string.character_fav_failure, character.name),
+                Toast.LENGTH_SHORT
+            ).show()
+        }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

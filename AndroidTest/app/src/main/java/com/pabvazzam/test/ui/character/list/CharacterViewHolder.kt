@@ -12,7 +12,7 @@ class CharacterViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
     private val binding get() = _binding
 
-    fun render(character: Character, onCharacterClicked: (Character) -> Unit) {
+    fun render(character: Character, onFavClicked: (Character) -> Unit) {
         binding.rvItemCharacterName.text = character.name
         binding.rvItemCharacterSpecies.text = character.species
         binding.rvItemCharacterStatus.text = character.status
@@ -20,5 +20,9 @@ class CharacterViewHolder(view: View) : RecyclerView.ViewHolder(view) {
             .load(character.image)
             .centerCrop()
             .into(binding.rvItemCharacterImage)
+
+        binding.rvItemCharacterFav.setOnClickListener {
+            onFavClicked(character)
+        }
     }
 }

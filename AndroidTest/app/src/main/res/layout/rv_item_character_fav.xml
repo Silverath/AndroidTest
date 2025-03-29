@@ -5,7 +5,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <ImageView
-        android:id="@+id/rv_item_character_image"
+        android:id="@+id/rv_item_character_fav_image"
         android:contentDescription="@string/task_edit"
         android:layout_width="80dp"
         android:layout_height="80dp"
@@ -15,37 +15,27 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
-        android:id="@+id/rv_item_character_name"
+        android:id="@+id/rv_item_character_fav_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="12dp"
-        app:layout_constraintStart_toEndOf="@id/rv_item_character_image"
-        app:layout_constraintTop_toTopOf="@id/rv_item_character_image" />
+        app:layout_constraintStart_toEndOf="@id/rv_item_character_fav_image"
+        app:layout_constraintTop_toTopOf="@id/rv_item_character_fav_image" />
 
     <TextView
-        android:id="@+id/rv_item_character_species"
+        android:id="@+id/rv_item_character_fav_species"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="12dp"
-        app:layout_constraintTop_toBottomOf="@id/rv_item_character_name"
-        app:layout_constraintStart_toEndOf="@id/rv_item_character_image" />
+        app:layout_constraintTop_toBottomOf="@id/rv_item_character_fav_name"
+        app:layout_constraintStart_toEndOf="@id/rv_item_character_fav_image" />
 
     <TextView
-        android:id="@+id/rv_item_character_status"
+        android:id="@+id/rv_item_character_fav_status"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="12dp"
-        app:layout_constraintTop_toBottomOf="@id/rv_item_character_species"
-        app:layout_constraintStart_toEndOf="@id/rv_item_character_image" />
-
-    <Button
-        android:id="@+id/rv_item_character_fav"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/rv_item_character_fav"
-        android:layout_marginEnd="16dp"
-        android:layout_marginTop="24dp"
-        app:layout_constraintTop_toBottomOf="@+id/rv_item_character_name"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/rv_item_character_fav_species"
+        app:layout_constraintStart_toEndOf="@id/rv_item_character_fav_image" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

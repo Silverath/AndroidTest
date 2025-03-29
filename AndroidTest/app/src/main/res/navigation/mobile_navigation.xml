@@ -22,7 +22,7 @@
     <fragment
         android:id="@+id/navigation_dashboard"
         android:name="com.pabvazzam.test.ui.character.list.CharacterFragment"
-        android:label="@string/title_dashboard"
+        android:label="@string/title_character"
         tools:layout="@layout/fragment_character" />
 
     <fragment

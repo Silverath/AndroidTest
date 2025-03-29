@@ -2,8 +2,8 @@
     <string name="app_name">AndroidTest</string>
     <string name="rv_item_task_clock_icon_description">Fecha de vencimiento</string>
     <string name="title_task">Tareas</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
+    <string name="title_character">Personajes</string>
+    <string name="title_notifications">Notificationes</string>
     <string name="task_add">Añadir Tarea</string>
     <string name="task_add_title_hint">Añade el título</string>
     <string name="task_add_description_hint">Añade la descripción</string>
@@ -26,7 +26,10 @@
     <string name="task_delete_failure">Ha habido un error al eliminar la tarea</string>
 
     <string name="rv_item_character_image_description">Imagen del personaje</string>
+    <string name="rv_item_character_fav">Favorito</string>
     <string name="character_list_load_error">Ha habido un error al cargar a los personajes</string>
-    <string name="character_list_fav_status">Favorito</string>
+    <string name="character_fav_success">%s ha sido añadido a favoritos</string>
+    <string name="character_fav_failure">No se pudo añadir a %s a favoritos</string>
+    <string name="character_fav">Ir a favoritos</string>
 
 </resources>

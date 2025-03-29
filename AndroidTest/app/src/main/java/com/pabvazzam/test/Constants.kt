@@ -9,3 +9,5 @@ const val TASK_STATUS_PENDING = "Pendiente"
 const val TASK_STATUS_DONE = "Completada"
 
 const val TASK_SAVED_LIST = "task.db.saved.list"
+
+const val FAV_CHARACTER_SAVED_LIST = "fav.character.db.saved.list"
