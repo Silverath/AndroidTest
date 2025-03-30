@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">AndroidTest</string>
     <string name="rv_item_task_clock_icon_description">Fecha de vencimiento</string>
+    <string name="task_pending_filter">Mostrar pendientes</string>
+    <string name="task_completed_filter">Mostrar completadas</string>
     <string name="title_task">Tareas</string>
     <string name="title_character">Personajes</string>
     <string name="title_notifications">Notificationes</string>
