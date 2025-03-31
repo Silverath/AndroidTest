@@ -1,6 +1,8 @@
 package com.pabvazzam.test.di
 
+import android.content.Context
 import android.content.SharedPreferences
+import androidx.work.WorkManager
 import com.google.gson.Gson
 import com.pabvazzam.test.BASE_URL
 import com.pabvazzam.test.api.ApiService
@@ -10,6 +12,7 @@ import com.pabvazzam.test.services.SharedPreferencesManager
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -35,7 +38,7 @@ object SystemServiceModule {
 
     @Provides
     @Singleton
-    fun provideSharedPreferencesRepository(
+    fun provideTaskRepository(
         sharedPreferences: SharedPreferences,
         gson: Gson
     ): TaskRepositoryImpl {
@@ -63,4 +66,10 @@ object SystemServiceModule {
             .addConverterFactory(GsonConverterFactory.create())
             .build()
             .create(ApiService::class.java)
+
+    @Provides
+    @Singleton
+    fun provideWorkManager(@ApplicationContext context: Context): WorkManager {
+        return WorkManager.getInstance(context)
+    }
 }

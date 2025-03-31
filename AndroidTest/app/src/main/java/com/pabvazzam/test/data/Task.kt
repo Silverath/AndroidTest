@@ -8,4 +8,5 @@ data class Task(
     val description: String,
     val expirationDate: String,
     val status: String = TASK_STATUS_PENDING,
+    var expirationNotified: Boolean = false
 )

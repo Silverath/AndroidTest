@@ -5,9 +5,9 @@ import androidx.lifecycle.viewModelScope
 import com.pabvazzam.test.TASK_STATUS_DONE
 import com.pabvazzam.test.TASK_STATUS_PENDING
 import com.pabvazzam.test.data.Task
-import com.pabvazzam.test.usecase.DeleteTaskUseCase
-import com.pabvazzam.test.usecase.GetTaskToEditUseCase
-import com.pabvazzam.test.usecase.SaveEditedTaskUseCase
+import com.pabvazzam.test.usecase.task.DeleteTaskUseCase
+import com.pabvazzam.test.usecase.task.GetTaskToEditUseCase
+import com.pabvazzam.test.usecase.task.SaveEditedTaskUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow

@@ -34,4 +34,7 @@
     <string name="character_fav_failure">No se pudo añadir a %s a favoritos</string>
     <string name="character_fav">Ir a favoritos</string>
 
+    <string name="task_notification_title">¡Una tarea vencerá pronto!</string>
+    <string name="task_notification_description">La tarea %s vencerá en %s minutos</string>
+
 </resources>

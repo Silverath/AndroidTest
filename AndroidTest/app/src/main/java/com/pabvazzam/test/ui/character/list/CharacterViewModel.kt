@@ -6,8 +6,8 @@ import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import com.pabvazzam.test.data.Character
 import com.pabvazzam.test.ui.character.list.paging.CharacterPagingSource
-import com.pabvazzam.test.usecase.AddFavCharacterUseCase
-import com.pabvazzam.test.usecase.GetCharactersApiUseCase
+import com.pabvazzam.test.usecase.character.AddFavCharacterUseCase
+import com.pabvazzam.test.usecase.character.GetCharactersApiUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow

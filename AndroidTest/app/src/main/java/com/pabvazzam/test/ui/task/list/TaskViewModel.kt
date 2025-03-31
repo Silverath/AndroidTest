@@ -3,7 +3,7 @@ package com.pabvazzam.test.ui.task.list
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.pabvazzam.test.data.Task
-import com.pabvazzam.test.usecase.GetTasksUseCase
+import com.pabvazzam.test.usecase.task.GetTasksUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow

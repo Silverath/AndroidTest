@@ -1,4 +1,4 @@
-package com.pabvazzam.test.usecase
+package com.pabvazzam.test.usecase.task
 
 import com.pabvazzam.test.data.Task
 import com.pabvazzam.test.repository.TaskRepositoryImpl

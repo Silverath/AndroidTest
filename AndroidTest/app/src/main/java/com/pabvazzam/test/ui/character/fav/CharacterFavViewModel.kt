@@ -2,7 +2,7 @@ package com.pabvazzam.test.ui.character.fav
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.pabvazzam.test.usecase.GetCharactersFavUseCase
+import com.pabvazzam.test.usecase.character.GetCharactersFavUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow

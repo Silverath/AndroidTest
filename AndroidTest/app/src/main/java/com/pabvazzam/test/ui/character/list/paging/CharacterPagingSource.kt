@@ -4,7 +4,7 @@ import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.pabvazzam.test.data.Character
 import com.pabvazzam.test.ui.character.list.CharacterUiState
-import com.pabvazzam.test.usecase.GetCharactersApiUseCase
+import com.pabvazzam.test.usecase.character.GetCharactersApiUseCase
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.update
 

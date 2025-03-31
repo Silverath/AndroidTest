@@ -1,4 +1,4 @@
-package com.pabvazzam.test.usecase
+package com.pabvazzam.test.usecase.character
 
 import com.pabvazzam.test.data.Character
 import com.pabvazzam.test.repository.CharacterRepositoryImpl

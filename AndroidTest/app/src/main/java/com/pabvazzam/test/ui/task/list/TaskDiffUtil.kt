@@ -22,5 +22,4 @@ class TaskDiffUtil(
     override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
         return oldTasks[oldItemPosition] == newTasks[newItemPosition]
     }
-
 }
