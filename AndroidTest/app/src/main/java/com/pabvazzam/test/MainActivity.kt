@@ -4,12 +4,13 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
-import androidx.work.OneTimeWorkRequestBuilder
+import androidx.work.PeriodicWorkRequestBuilder
 import androidx.work.WorkManager
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.pabvazzam.test.databinding.ActivityMainBinding
 import com.pabvazzam.test.notifications.NotifyExpireTaskWork
 import dagger.hilt.android.AndroidEntryPoint
+import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -37,7 +38,12 @@ class MainActivity : AppCompatActivity() {
 
     private fun initiateTasksWorker() {
         val worker =
-            OneTimeWorkRequestBuilder<NotifyExpireTaskWork>().build()
+            PeriodicWorkRequestBuilder<NotifyExpireTaskWork>(
+                15,
+                TimeUnit.MINUTES,
+                5,
+                TimeUnit.MINUTES
+            ).build()
         workManager.enqueue(worker)
     }
 }
