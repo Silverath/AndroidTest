@@ -40,8 +40,6 @@ class MainActivity : AppCompatActivity() {
         val worker =
             PeriodicWorkRequestBuilder<NotifyExpireTaskWork>(
                 15,
-                TimeUnit.MINUTES,
-                5,
                 TimeUnit.MINUTES
             ).build()
         workManager.enqueue(worker)
