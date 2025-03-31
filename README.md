@@ -21,4 +21,8 @@ En cuanto a los requisitos de las tareas, he decidido añadir la eliminación o 
 
     - Al editarlas, es cuando puedes cambiarlas a "completada" e incluso eliminarlas, y en este caso se puede modificar la fecha a una anterior.
 
-Con respecto al consumo de la api de Rick y Morty, para la acción de añadir a favoritos, he puesto en cada entrada de los personajes un botón para ello y nada más, ya que en los requisitos solo dice dsfs
+Otra cosa importante a destacar es que se puede apreciar que en cada vista hay un manejo de estados de la iu distintas. Concretamente, para las vistas de editar tarea y carga de los personajes por medio de la api, hay tres tipos de estado: success, error y loading. Esto lo he hecho en estas vistas dado que hay acciones que pueden tardar algo, para que en ese pequeño instante el usuario no pueda hacer nada mientras se estén cargando datos (como setear los valores de la tarea en el formulario para editarlos o la carga de datos de la api), o para informar al usuario de algún error que esté fuera del alcance de la app (como el fallo al cargar los datos de la api por no tener conexión a Internet). También, lo he hecho de esta forma para mostrar diferentes formas de manejar los estados de las vistas, ya que este proyecto es para demostrar conocimientos.
+
+Metiéndonos en los extras (los cuales se han realizado todos), para las notificaciones he decidido utilizar WorkManager, para poder mostrar las notificaciones en el background cada 15 minutos (tiempo mínimo para los intervalos según la documentación) si quedan 15 minutos o menos para que expire dicha tarea.
+
+Para los unit tests, no me he molestado mucho y he hecho solo algunos para testear las funcionalidades del view model para añadir las tareas.
