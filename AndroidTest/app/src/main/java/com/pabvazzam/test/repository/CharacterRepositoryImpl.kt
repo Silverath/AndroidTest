@@ -19,17 +19,13 @@ class CharacterRepositoryImpl @Inject constructor(
         return apiService.getAllCharacters(page).body()?.results
     }
 
-    override fun addFavCharacter(character: Character) {
-        val characters = getFavCharacters()
-        var listToSave = emptyList<Character>()
-        if (characters.isEmpty())
-            listToSave = listOf(character)
-        else
-            if (!characters.contains(character)) {
-                listToSave = listOf(character).plus(characters)
-            }
+    override fun addFavCharacter(character: Character): List<Character> {
+        val characters = getFavCharacters().toMutableList()
+        characters.add(character)
+        val listToSave = characters.toList()
         val json = gson.toJson(listToSave)
         sharedPreferences.edit { putString(FAV_CHARACTER_SAVED_LIST, json) }
+        return listToSave
     }
 
     override fun getFavCharacters(): List<Character> {
@@ -37,5 +33,14 @@ class CharacterRepositoryImpl @Inject constructor(
             sharedPreferences.getString(FAV_CHARACTER_SAVED_LIST, null),
             object : TypeToken<List<Character>?>() {}.type
         ) ?: emptyList()
+    }
+
+    override fun removeFavCharacter(character: Character): List<Character> {
+        val characters = getFavCharacters().toMutableList()
+        characters.remove(character)
+        val listToSave = characters.toList()
+        val json = gson.toJson(listToSave)
+        sharedPreferences.edit { putString(FAV_CHARACTER_SAVED_LIST, json) }
+        return listToSave
     }
 }

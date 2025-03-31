@@ -9,7 +9,7 @@ sealed interface CharacterUiState {
 
     data class Success(
         val firstLoad: Boolean = true,
-        val characters:
-        List<Character>
+        val characters: List<Character>,
+        val favCharacters: List<Character>
     ) : CharacterUiState
 }

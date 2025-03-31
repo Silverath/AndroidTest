@@ -26,13 +26,9 @@ class TaskRepositoryImpl @Inject constructor(
     }
 
     override fun addTask(task: Task) {
-        val tasks = getTasks()
-        val listToSave =
-            if (tasks.isEmpty())
-                listOf(task)
-            else
-                listOf(task).plus(tasks)
-        val json = gson.toJson(listToSave)
+        val tasks = getTasks().toMutableList()
+        tasks.add(task)
+        val json = gson.toJson(tasks.toList())
         sharedPreferences.edit { putString(TASK_SAVED_LIST, json) }
     }
 

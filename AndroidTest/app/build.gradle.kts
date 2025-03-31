@@ -61,13 +61,13 @@ dependencies {
     implementation(libs.androidx.work.runtime.ktx)
     implementation(libs.androidx.hilt.common)
     implementation(libs.androidx.hilt.work)
-    implementation(libs.test.implementation)
-    implementation(libs.androidx.test.implementation)
-    implementation(libs.ktx.coroutines.test)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+    androidTestImplementation(libs.test.implementation)
+    androidTestImplementation(libs.androidx.test.implementation)
+    androidTestImplementation(libs.ktx.coroutines.test)
 
     kapt(libs.hilt.android.compiler)
 }

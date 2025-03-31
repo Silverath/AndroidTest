@@ -28,10 +28,13 @@
     <string name="task_delete_failure">Ha habido un error al eliminar la tarea</string>
 
     <string name="rv_item_character_image_description">Imagen del personaje</string>
-    <string name="rv_item_character_fav">Favorito</string>
+    <string name="rv_item_character_fav_add">Añadir a favoritos</string>
+    <string name="rv_item_character_fav_remove">Eliminar de favoritos</string>
     <string name="character_list_load_error">Ha habido un error al cargar a los personajes</string>
-    <string name="character_fav_success">%s ha sido añadido a favoritos</string>
-    <string name="character_fav_failure">No se pudo añadir a %s a favoritos</string>
+    <string name="character_fav_add_success">%s ha sido añadido a favoritos</string>
+    <string name="character_fav_remove_success">%s ha sido eliminado de favoritos</string>
+    <string name="character_fav_add_failure">No se pudo añadir a %s a favoritos</string>
+    <string name="character_fav_remove_failure">No se pudo eliminar a %s de favoritos</string>
     <string name="character_fav">Ir a favoritos</string>
 
     <string name="task_notification_title">¡Una tarea vencerá pronto!</string>

@@ -7,9 +7,11 @@ import com.pabvazzam.test.R
 import com.pabvazzam.test.data.Character
 
 class CharacterAdapter(
-    private val onFavClicked: (Character) -> Unit
+    private val onFavClicked: (Character, Boolean) -> Unit
 ) :
     PagingDataAdapter<Character, CharacterViewHolder>(CharacterDiffUtil()) {
+
+    var favListCharacters = emptyList<Character>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CharacterViewHolder {
         return CharacterViewHolder(
@@ -20,7 +22,7 @@ class CharacterAdapter(
     override fun onBindViewHolder(holder: CharacterViewHolder, position: Int) {
         val character = getItem(position)
         if (character != null) {
-            holder.render(character, onFavClicked)
+            holder.render(character, onFavClicked, favListCharacters)
         }
     }
 }
