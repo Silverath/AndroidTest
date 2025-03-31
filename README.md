@@ -4,7 +4,8 @@
 
 1. Clona este repositorio:
 ```bash
-git clone https://github.com/tuusuario/nombre-del-repo.git
+git clone https://github.com/Silverath/AndroidTest
+.git
 ```
 
 2. Abre el proyecto en Android Studio.
