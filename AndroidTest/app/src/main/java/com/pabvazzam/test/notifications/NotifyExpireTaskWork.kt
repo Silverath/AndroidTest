@@ -1,4 +1,4 @@
-package com.pabvazzam.test.ui.notifications
+package com.pabvazzam.test.notifications
 
 import android.app.NotificationChannel
 import android.app.NotificationManager

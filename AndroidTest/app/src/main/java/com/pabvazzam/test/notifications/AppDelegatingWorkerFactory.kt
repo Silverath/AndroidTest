@@ -1,4 +1,4 @@
-package com.pabvazzam.test.ui.notifications
+package com.pabvazzam.test.notifications
 
 import androidx.work.DelegatingWorkerFactory
 import javax.inject.Inject

@@ -8,7 +8,7 @@ import androidx.work.OneTimeWorkRequestBuilder
 import androidx.work.WorkManager
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.pabvazzam.test.databinding.ActivityMainBinding
-import com.pabvazzam.test.ui.notifications.NotifyExpireTaskWork
+import com.pabvazzam.test.notifications.NotifyExpireTaskWork
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 

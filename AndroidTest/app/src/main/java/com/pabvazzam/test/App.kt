@@ -4,7 +4,7 @@ import android.app.Application
 import android.util.Log
 import androidx.work.Configuration
 import androidx.work.WorkManager
-import com.pabvazzam.test.ui.notifications.AppDelegatingWorkerFactory
+import com.pabvazzam.test.notifications.AppDelegatingWorkerFactory
 import dagger.hilt.EntryPoint
 import dagger.hilt.EntryPoints
 import dagger.hilt.InstallIn
